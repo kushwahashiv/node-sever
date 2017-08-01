@@ -1,0 +1,22 @@
+{
+  "name": "node-server",
+  "version": "0.0.1",
+  "description": "node server sample",
+  "author": "Shiv Kushwaha",
+  "public": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.6.8",
+    "express": "^4.15.3",
+    "pug": "^2.0.0-rc.2",
+    "method-override": "^2.3.9",
+    "mongoose": "^4.11.5",
+    "morgan": "^1.8.2",
+    "serve-favicon": "~2.4.3"
+  }
+}
