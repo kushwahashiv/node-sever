@@ -4,10 +4,9 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mySurvey');
 
-const Survey = require('./routes/survey');
+const Role = require('./routes/role');
+const User = require('./routes/user');
 const app = express();
 
 app.use(function (req, res, next) {
@@ -21,7 +20,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use('/survey', Survey);
+app.use('/role', Role);
+app.use('/user', User);
 
 app.get('*', (req, res) => {
     res.send('Welcome to the node server API');
