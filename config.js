@@ -43,12 +43,12 @@ const config = {
     port: process.env.CCD_PORT || process.env.PORT || 8080,
     sources: {
         database: {
-            dbName: process.env.DATABASE_DBNAME || 'maker-sight',
+            dbName: process.env.DATABASE_DBNAME || 'node-server',
             user: process.env.DATABASE_USER || '',
             password: process.env.DATABASE_PASSWORD || '',
             options: {
                 dialect: 'sqlite',
-                storage: 'maker-sight.sqlite',
+                storage: 'node-server.sqlite',
                 operatorsAliases,
             },
             sync: {

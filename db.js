@@ -4,7 +4,7 @@ const initializeDb = () => {
     // Create connection - No username password for now
     const con = new Sequelize('', '', '', {
        dialect: 'sqlite',
-       storage: 'maker_sight.sqlite',
+       storage: 'node_server.sqlite',
     });
     // Connect to Database
     // Instantiate models

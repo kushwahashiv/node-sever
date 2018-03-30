@@ -7,7 +7,7 @@ router.route('/')
         models.Role.findAll({ include: [models.User] }).then((result) => {
             res.json(result);
         }).catch((err) => {
-            return new Error(err);
+            res.status(500).send({ message: err.message });
         });
     })
     .post((req, res) => {
@@ -15,7 +15,7 @@ router.route('/')
         models.Role.create(body).then((result) => {
             res.json(result);
         }).catch((err) => {
-            return new Error(err);
+            res.status(500).send({ message: err.message });
         });
     });
 

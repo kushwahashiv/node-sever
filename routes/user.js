@@ -22,16 +22,42 @@ router.route('/')
         const body = req.body;
         models.User.findOne({ where: { email: body.email}}).then((user) => {
             if (!user) {
-                return new Error(`User - ${body.email} not found in the system`);
+                res.status(400).send({ message: `User - ${body.email} not found in the system` });
             }
             Object.assign(user, body);
             user.save().then((result) => {
                 res.json(result);
             }).catch((error) => {
-                return new Error(error);
+                res.status(500).send({ message: error.message });
             });
         }).catch((err) => {
-            return new Error(err);
+            res.status(500).send({ message: err.message });
+        });
+    });
+router.route('/:id')
+    .get((req, res) => {
+        const id = req.params.id;
+        models.User.findById(id).then((user) => {
+            res.json(user);
+        }).catch((err) => {
+            console.error(err);
+            res.status(500).send({ message: err.message });
+        });
+    })
+    .delete((req, res) => {
+        const id = req.params.id;
+        models.User.findById(id).then((user) => {
+            if (!user) {
+                res.status(400).send({ message: 'User not found' });
+            }
+            user.destroy().then((result) => {
+                res.json(result);
+            }).catch((error) => {
+                res.status(500).send({ message: error.message });
+            });
+        }).catch((err) => {
+            console.error(err);
+            res.status(500).send({ message: err.message });
         });
     });
 
